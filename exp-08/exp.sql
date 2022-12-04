@@ -100,15 +100,15 @@ DEPARTMENT_ID;
 
 
 
-select emp_name “manager”, (select min(salary) from emp e where (emp.depno=e.depno) group by
-e.depno having min(salary)>13000) “salary” from emp,dept where emp.emp_no=dept.
-MANAGER_ID and emp.depno=dept. DEPARTMENT_ID
+select emp_name "manager", (select min(salary) from emp1 e where (emp1.depno=e.depno) group by
+e.depno having min(salary)>13000) "salary" from emp1,dept where emp1.emp_no=dept.
+MANAGER_ID and emp1.depno=dept. DEPARTMENT_ID;
 
 
-select min(emp.salary) from emp,emp e where (emp.depno=e.depno) group by e.depno having
-min(emp.salary)>15000
+select min(emp1.salary) from emp1,emp1 e where (emp1.depno=e.depno) group by e.depno having
+min(emp1.salary)>15000;
 
-
+--------------------------
 
 SELECT d.department_name "Name", d.loc "Location ",
 COUNT(*) "Number of People", ROUND(AVG(salary),2) "Salary"
