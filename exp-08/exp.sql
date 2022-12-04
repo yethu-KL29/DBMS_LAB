@@ -48,10 +48,7 @@ SELECT emp_name, hiredate FROM emp1 WHERE hiredate LIKE '%94';
 
 SELECT emp_name, salary, comm FROM emp1 WHERE comm >0
 ORDER BY salary DESC, comm DESC;
-------------------------------------------------------------------------
----------------------------------------------------------------------
 
--- SELECT emp_name, job FROM emp1,dept  emp1.Depno=dept.Department_id;
 
 SELECT emp_name FROM emp1 WHERE emp_name LIKE '__a%';
 
@@ -73,8 +70,7 @@ WHERE emp1.depno = dept.department_id order by dept.department_name;
 SELECT emp_Name, HireDate FROM emp1 WHERE ((HireDate)>any(SELECT
 HireDate FROM emp1 WHERE emp_Name='Mathew'));
 
--------------------------------------------------------------
--------------------------------------------------------------
+
 
 SELECT emp1.emp_name employee , emp1.hiredate "EMP HIRE DATE", emp1.salary,
 manager.emp_name manager, manager.hiredate "MANAGER HIRE DATE" FROM emp1 ,
@@ -108,7 +104,7 @@ MANAGER_ID and emp1.depno=dept. DEPARTMENT_ID;
 select min(emp1.salary) from emp1,emp1 e where (emp1.depno=e.depno) group by e.depno having
 min(emp1.salary)>15000;
 
---------------------------
+
 
 SELECT d.department_name "Name", d.loc "Location ",
 COUNT(*) "Number of People", ROUND(AVG(salary),2) "Salary"
