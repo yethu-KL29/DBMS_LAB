@@ -58,38 +58,29 @@ SELECT emp_name FROM emp1 WHERE emp_name LIKE '__a%';
 SELECT emp_name FROM emp1 WHERE emp_name LIKE '%a%' AND emp_name
 LIKE '%e%';
 
-SELECT emp_name, job, salary FROM emp WHERE job IN ('Sa_rep', 'CLERK')
+SELECT emp_name, job, salary FROM emp1 WHERE job IN ('Sa_rep', 'CLERK')
 AND salary NOT IN (2000, 4000, 7000);
 
-SELECT INITCAP(emp_name) "Name", LENGTH(emp_name) "Length" FROM emp;
 
 
-
-WHERE emp_name LIKE 'J%' OR emp_name LIKE 'M%' OR emp_name LIKE
-'A%'ORDER BY emp_name;
+SELECT emp_name, ROUND(MONTH(CURRENT_DATE) - MONTH(hiredate)) MONTHS_WORKED, ROUND(YEAR(CURRENT_DATE) - YEAR(hiredate), 2) "NO: Of YEARS" FROM emp1 ORDER BY MONTH(CURRENT_DATE) - MONTH(hiredate);
 
 
-SELECT
-emp_name,
-ROUND(MONTHS_BETWEEN(SYSDATE,
-hiredate))
-MONTHS_WORKED, round(MONTHS_BETWEEN(SYSDATE, hiredate)/12,2) “NO:
-Of YEARS” FROM emp ORDER BY MONTHS_BETWEEN(SYSDATE, hiredate);
+SELECT emp1.emp_name, emp1.depno, dept.department_name FROM emp1 , dept
+WHERE emp1.depno = dept.department_id order by dept.department_name;
 
 
-SELECT emp.emp_name, emp.depno, dept.department_name FROM emp , dept
-WHERE emp.depno = dept.department_id order by dept.department_name;
+SELECT emp_Name, HireDate FROM emp1 WHERE ((HireDate)>any(SELECT
+HireDate FROM emp1 WHERE emp_Name='Mathew'));
 
+-------------------------------------------------------------
+-------------------------------------------------------------
 
-SELECT emp_Name, HireDate FROM Emp WHERE ((HireDate)>any(SELECT
-HireDate FROM Emp WHERE emp_Name='Mathew'));
-
-
-SELECT emp.emp_name employee , emp.hiredate “EMP HIRE DATE”, emp.salary,
-manager.emp_name manager, manager.hiredate “MANAGER HIRE DATE” FROM emp ,
-dept, emp manager WHERE dept.manager_id = manager.emp_no and
-emp.depno=dept.department_id and
-emp.hiredate < manager.hiredate;
+SELECT emp1.emp_name employee , emp1.hiredate “EMP HIRE DATE”, emp1.salary,
+manager.emp_name manager, manager.hiredate “MANAGER HIRE DATE” FROM emp1 ,
+dept, emp1 manager WHERE dept.manager_id = manager.emp_no and
+emp1.depno=dept.department_id and
+emp1.hiredate < manager.hiredate;
 
 
 SELECT job, COUNT(*) “No: of Jobs” FROM emp GROUP BY job;
