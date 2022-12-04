@@ -112,22 +112,18 @@ min(emp1.salary)>15000;
 
 SELECT d.department_name "Name", d.loc "Location ",
 COUNT(*) "Number of People", ROUND(AVG(salary),2) "Salary"
-FROM emp e, dept d
+FROM emp1 e, dept d
 WHERE e.depno = d.department_id GROUP BY d.department_name, d.loc;
 
 
-SELECT emp_name, hiredate FROM emp WHERE depno = (SELECT depno
-FROM emp WHERE emp_name = 'John') and emp_name<>'John';
+SELECT emp_name, hiredate FROM emp1 WHERE depno = (SELECT depno
+FROM emp1 WHERE emp_name = 'John') and emp_name<>'John';
 
-SELECT emp_no, emp_name,department_name FROM emp,dept
-WHERE depno IN (SELECT depno FROM emp WHERE emp_name like '%u%') and
-emp.depno=dept.department_id;
+SELECT emp_no, emp_name,department_name FROM emp1,dept
+WHERE depno IN (SELECT depno FROM emp1 WHERE emp_name like '%u%') and
+emp1.depno=dept.department_id;
 
 
-SELECT Emp_name, department_name FROM emp, dept WHERE emp.depno =
-dept.department_id AND emp.depno in (SELECT depno FROM emp GROUP BY depno
-HAVING count(*) >4) ORDER BY department_name, emp_name;
+SELECT Emp_name, department_name FROM emp1 INNER JOIN dept ON emp1.depno = dept.department_id WHERE emp1.depno IN (SELECT depno FROM emp1 GROUP BY depno HAVING COUNT(*) > 4) ORDER BY department_name, emp_name;
 
-SELECT emp_name "employee",to_char(trunc(months_between(sysdate,hiredate)/12))||'
-years '|| to_char(trunc(mod(months_between (sysdate, hiredate),12)))||' months ' "length of
-service" FROM emp;
+SELECT emp_name "employee", CONCAT(FLOOR(DATEDIFF(CURDATE(), hiredate)/12), ' years ', MOD(DATEDIFF(CURDATE(), hiredate),12), ' months ') "length of service" FROM emp1;
