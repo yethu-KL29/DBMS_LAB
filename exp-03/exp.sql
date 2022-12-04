@@ -41,3 +41,4 @@ insert into manages values('E-110', Null);
 insert into manages values('E-111', null);
 
 SHOW VARIABLES LIKE 'secure_file_priv';
+Create table works2(emp_id char(8) references emp(emp_id),company_name varchar(18) references company(company_name),salary float,primary key(emp_id,company_name));
