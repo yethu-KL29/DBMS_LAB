@@ -86,17 +86,17 @@ emp1.hiredate < manager.hiredate;
 SELECT Job, COUNT(*) "No: of Jobs" FROM emp1 GROUP BY job;
 
 
-SELECT min(salary) “MINIMUM SALARY”,manager_id, department_name FROM
-emp,dept where emp.depno=dept.department_id AND manager_id IS NOT NULL
+SELECT min(salary) "MINIMUM SALARY",manager_id, department_name FROM
+emp1,dept where emp1.depno=dept.department_id AND manager_id IS NOT NULL
 GROUP BY manager_id, department_name HAVING MIN(salary) > 6000
-ORDER BY “MINIMUM SALARY” DESC
+ORDER BY "MINIMUM SALARY" DESC;
 
 
-select emp_name “manager”,emp.depno,emp.emp_no, (select min(salary) from emp e
-where (emp.depno=e.depno) group by e.depno having min(salary)>15000) “salary” from
-emp,dept where emp.emp_no=dept. MANAGER_ID
-and emp.depno=dept.
-DEPARTMENT_ID
+select emp_name "manager",emp1.depno,emp1.emp_no, (select min(salary) from emp1 e
+where (emp1.depno=e.depno) group by e.depno having min(salary)>15000) "salary" from
+emp1,dept where emp1.emp_no=dept. MANAGER_ID
+and emp1.depno=dept.
+DEPARTMENT_ID;
 
 
 
