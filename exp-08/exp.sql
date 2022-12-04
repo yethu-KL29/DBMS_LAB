@@ -76,14 +76,14 @@ HireDate FROM emp1 WHERE emp_Name='Mathew'));
 -------------------------------------------------------------
 -------------------------------------------------------------
 
--- SELECT emp1.emp_name employee , emp1.hiredate “EMP HIRE DATE”, emp1.salary,
--- manager.emp_name manager, manager.hiredate “MANAGER HIRE DATE” FROM emp1 ,
--- dept, emp1 manager WHERE dept.manager_id = manager.emp_no and
--- emp1.depno=dept.department_id and
--- emp1.hiredate < manager.hiredate;
+SELECT emp1.emp_name employee , emp1.hiredate "EMP HIRE DATE", emp1.salary,
+manager.emp_name manager, manager.hiredate "MANAGER HIRE DATE" FROM emp1 ,
+dept, emp1 manager WHERE dept.manager_id = manager.emp_no and
+emp1.depno=dept.department_id and
+emp1.hiredate < manager.hiredate;
 
 
--- SELECT Job, COUNT(*) “No: of Jobs” FROM emp GROUP BY job;
+SELECT Job, COUNT(*) "No: of Jobs" FROM emp1 GROUP BY job;
 
 
 SELECT min(salary) “MINIMUM SALARY”,manager_id, department_name FROM
